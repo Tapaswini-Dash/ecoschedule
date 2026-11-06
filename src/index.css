@@ -1,0 +1,55 @@
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap');
+@import "tailwindcss";
+@import "leaflet/dist/leaflet.css";
+
+/* ---------- EcoSchedule design tokens ---------- */
+@theme {
+  --font-sans: 'Manrope', ui-sans-serif, system-ui, sans-serif;
+
+  --color-ink: #0b0f0d;          /* page background (charcoal) */
+  --color-panel: #121815;        /* cards */
+  --color-panel-2: #18201c;      /* raised / hover */
+  --color-line: #232d27;         /* borders */
+  --color-text: #e8eeea;
+  --color-muted: #8a9a91;
+
+  --color-forest: #1f7a3d;       /* deep forest green (active nav, buttons) */
+  --color-leaf: #3fb868;         /* highlights, charts */
+
+  --color-ok: #3fb868;
+  --color-warn: #e3a62f;
+  --color-bad: #e0534f;
+  --color-info: #4b8df0;
+}
+
+html, body, #root { height: 100%; }
+body {
+  background: var(--color-ink);
+  color: var(--color-text);
+  font-family: var(--font-sans);
+}
+
+/* Leaflet dark polish */
+.leaflet-container { background: #0e1411; font-family: var(--font-sans); }
+.leaflet-tooltip {
+  background: var(--color-panel-2); color: var(--color-text);
+  border: 1px solid var(--color-line); box-shadow: none;
+}
+.leaflet-tooltip-top:before { border-top-color: var(--color-line); }
+.dashboard-dark-map .leaflet-tile { filter: invert(0.88) hue-rotate(180deg) brightness(0.72) saturate(0.55) contrast(1.05); }
+.dashboard-vehicle-marker { background: transparent; border: 0; }
+.dashboard-vehicle-marker__body {
+  display: grid;
+  width: 34px;
+  height: 34px;
+  place-items: center;
+  border: 2px solid #fff;
+  border-radius: 50%;
+  background: #18883b;
+  color: #fff;
+  box-shadow: 0 2px 8px #000b;
+}
+.dashboard-vehicle-marker__body svg { width: 22px; height: 22px; }
+
+:focus-visible { outline: 2px solid var(--color-leaf); outline-offset: 2px; }
+@media (prefers-reduced-motion: reduce) { * { transition: none !important; animation: none !important; } }
